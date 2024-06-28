@@ -1,9 +1,18 @@
 function add(numbers) {
-    if(numbers === '') {
-        return 0;
-    }
+  if (numbers === "") {
+    return 0;
+  }
 
-    return Number(numbers)
+  let delimiter = ",";
+
+  const numArray = numbers.split(new RegExp(`[${delimiter}\n]`));
+
+  const sum = numArray.reduce((acc, num) => {
+    const parsedNum = parseInt(num, 10);
+    return acc + parsedNum;
+  }, 0);
+
+  return sum;
 }
 
 module.exports = add;
