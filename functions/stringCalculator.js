@@ -5,6 +5,12 @@ function add(numbers) {
 
   let delimiter = ",";
 
+  if (numbers.startsWith("//")) {
+    const delimiterEnd = numbers.indexOf("\n");
+    delimiter = numbers.substring(2, delimiterEnd);
+    numbers = numbers.substring(delimiterEnd + 1);
+  }
+
   const numArray = numbers.split(new RegExp(`[${delimiter}\n]`));
 
   const sum = numArray.reduce((acc, num) => {
