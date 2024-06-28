@@ -1,3 +1,4 @@
+const { expect, test } = require("@jest/globals");
 const add = require("../functions/stringCalculator");
 
 test("returns 0 for an empty string", () => {
@@ -22,4 +23,8 @@ test("handles new lines between numbers", () => {
 
 test("supports different delimiters", () => {
   expect(add("//;\n1;2")).toBe(3);
+});
+
+test("throws an exception for negative numbers", () => {
+  expect(() => add("1,-2")).toThrow("negative numbers not allowed: -2");
 });
